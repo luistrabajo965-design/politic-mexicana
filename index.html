@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>Luna Game — Carrera Política</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         APP
+         Todo el juego vive dentro de este contenedor.
+         ========================================================= -->
+    <div id="app">
+
+
+        <!-- =====================================================
+             PANTALLA DE INICIO
+             ===================================================== -->
+        <section
+            id="screen-start"
+            class="screen screen-start"
+            data-screen="start"
+        >
+
+            <div class="start-background"></div>
+
+            <div class="start-content">
+
+                <div class="brand">
+                    <span class="brand-kicker">
+                        SIMULADOR DE CARRERA
+                    </span>
+
+                    <h1>LUNA GAME</h1>
+
+                    <p>
+                        De la colonia al poder.
+                    </p>
+                </div>
+
+
+                <div class="start-actions">
+
+                    <button
+                        id="btn-new-game"
+                        class="btn btn-primary"
+                        type="button"
+                    >
+                        Nueva historia
+                    </button>
+
+                    <button
+                        id="btn-continue-game"
+                        class="btn btn-secondary"
+                        type="button"
+                    >
+                        Continuar historia
+                    </button>
+
+                </div>
+
+
+                <div class="start-footer">
+                    <span>Simulación política</span>
+                    <span>•</span>
+                    <span>Historia interactiva</span>
+                    <span>•</span>
+                    <span>Decisiones con consecuencias</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CREACIÓN DEL PERSONAJE
+             ===================================================== -->
+        <section
+            id="screen-creation"
+            class="screen screen-creation is-hidden"
+            data-screen="creation"
+        >
+
+            <div class="creation-layout">
+
+
+                <!-- ENCABEZADO -->
+                <header class="creation-header">
+
+                    <div>
+                        <span class="section-kicker">
+                            NUEVA HISTORIA
+                        </span>
+
+                        <h2>
+                            Construye tu personaje
+                        </h2>
+
+                        <p>
+                            Tu origen, personalidad y decisiones
+                            definirán la carrera que estás a punto de comenzar.
+                        </p>
+                    </div>
+
+                    <div class="creation-step">
+                        <span id="creation-step-current">1</span>
+                        <span>/</span>
+                        <span id="creation-step-total">4</span>
+                    </div>
+
+                </header>
+
+
+
+                <!-- CUERPO DE CREACIÓN -->
+                <div class="creation-body">
+
+
+                    <!-- PASO 1 -->
+                    <div
+                        id="creation-step-1"
+                        class="creation-panel creation-panel-active"
+                        data-creation-step="1"
+                    >
+
+                        <div class="panel-heading">
+                            <span class="panel-number">01</span>
+
+                            <div>
+                                <h3>Identidad</h3>
+                                <p>
+                                    ¿Quién eres antes de entrar en política?
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-field form-field-wide">
+
+                                <label for="player-name">
+                                    Nombre
+                                </label>
+
+                                <input
+                                    id="player-name"
+                                    type="text"
+                                    maxlength="40"
+                                    autocomplete="off"
+                                    placeholder="Escribe tu nombre"
+                                >
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="player-age">
+                                    Edad inicial
+                                </label>
+
+                                <select id="player-age">
+                                    <option value="18">18 años</option>
+                                    <option value="20">20 años</option>
+                                    <option value="22">22 años</option>
+                                    <option value="24">24 años</option>
+                                    <option value="26">26 años</option>
+                                    <option value="28">28 años</option>
+                                    <option value="30">30 años</option>
+                                    <option value="32">32 años</option>
+                                    <option value="35">35 años</option>
+                                    <option value="38">38 años</option>
+                                    <option value="40">40 años</option>
+                                    <option value="45">45 años</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="player-gender">
+                                    Identidad
+                                </label>
+
+                                <select id="player-gender">
+                                    <option value="mujer">Mujer</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="otro">Otra</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASO 2 -->
+                    <div
+                        id="creation-step-2"
+                        class="creation-panel is-hidden"
+                        data-creation-step="2"
+                    >
+
+                        <div class="panel-heading">
+                            <span class="panel-number">02</span>
+
+                            <div>
+                                <h3>Tu origen</h3>
+                                <p>
+                                    El lugar donde comienza tu historia.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-field form-field-wide">
+
+                                <label for="player-state">
+                                    Estado
+                                </label>
+
+                                <select id="player-state">
+                                    <option value="">
+                                        Selecciona un estado
+                                    </option>
+
+                                    <option value="aguascalientes">
+                                        Aguascalientes
+                                    </option>
+
+                                    <option value="baja-california">
+                                        Baja California
+                                    </option>
+
+                                    <option value="baja-california-sur">
+                                        Baja California Sur
+                                    </option>
+
+                                    <option value="campeche">
+                                        Campeche
+                                    </option>
+
+                                    <option value="coahuila">
+                                        Coahuila
+                                    </option>
+
+                                    <option value="colima">
+                                        Colima
+                                    </option>
+
+                                    <option value="chiapas">
+                                        Chiapas
+                                    </option>
+
+                                    <option value="chihuahua">
+                                        Chihuahua
+                                    </option>
+
+                                    <option value="ciudad-de-mexico">
+                                        Ciudad de México
+                                    </option>
+
+                                    <option value="durango">
+                                        Durango
+                                    </option>
+
+                                    <option value="guanajuato">
+                                        Guanajuato
+                                    </option>
+
+                                    <option value="guerrero">
+                                        Guerrero
+                                    </option>
+
+                                    <option value="hidalgo">
+                                        Hidalgo
+                                    </option>
+
+                                    <option value="jalisco">
+                                        Jalisco
+                                    </option>
+
+                                    <option value="mexico">
+                                        Estado de México
+                                    </option>
+
+                                    <option value="michoacan">
+                                        Michoacán
+                                    </option>
+
+                                    <option value="morelos">
+                                        Morelos
+                                    </option>
+
+                                    <option value="nayarit">
+                                        Nayarit
+                                    </option>
+
+                                    <option value="nuevo-leon">
+                                        Nuevo León
+                                    </option>
+
+                                    <option value="oaxaca">
+                                        Oaxaca
+                                    </option>
+
+                                    <option value="puebla">
+                                        Puebla
+                                    </option>
+
+                                    <option value="queretaro">
+                                        Querétaro
+                                    </option>
+
+                                    <option value="quintana-roo">
+                                        Quintana Roo
+                                    </option>
+
+                                    <option value="san-luis-potosi">
+                                        San Luis Potosí
+                                    </option>
+
+                                    <option value="sinaloa">
+                                        Sinaloa
+                                    </option>
+
+                                    <option value="sonora">
+                                        Sonora
+                                    </option>
+
+                                    <option value="tabasco">
+                                        Tabasco
+                                    </option>
+
+                                    <option value="tamaulipas">
+                                        Tamaulipas
+                                    </option>
+
+                                    <option value="tlaxcala">
+                                        Tlaxcala
+                                    </option>
+
+                                    <option value="veracruz">
+                                        Veracruz
+                                    </option>
+
+                                    <option value="yucatan">
+                                        Yucatán
+                                    </option>
+
+                                    <option value="zacatecas">
+                                        Zacatecas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="player-municipality">
+                                    Municipio
+                                </label>
+
+                                <select id="player-municipality">
+                                    <option value="">
+                                        Selecciona municipio
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="player-neighborhood">
+                                    Colonia
+                                </label>
+
+                                <select id="player-neighborhood">
+                                    <option value="">
+                                        Selecciona colonia
+                                    </option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASO 3 -->
+                    <div
+                        id="creation-step-3"
+                        class="creation-panel is-hidden"
+                        data-creation-step="3"
+                    >
+
+                        <div class="panel-heading">
+                            <span class="panel-number">03</span>
+
+                            <div>
+                                <h3>Tu historia</h3>
+                                <p>
+                                    Elige el contexto social desde el que partes.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div
+                            id="origin-options"
+                            class="choice-grid"
+                        >
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-origin="barrio"
+                            >
+                                <span class="choice-card-icon">
+                                    01
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Del barrio
+                                    </strong>
+
+                                    <small>
+                                        Conoces las calles,
+                                        vecinos y problemas de tu comunidad.
+                                    </small>
+                                </span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-origin="familia"
+                            >
+                                <span class="choice-card-icon">
+                                    02
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Familia trabajadora
+                                    </strong>
+
+                                    <small>
+                                        Vienes de una familia acostumbrada
+                                        a resolver problemas por su cuenta.
+                                    </small>
+                                </span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-origin="profesional"
+                            >
+                                <span class="choice-card-icon">
+                                    03
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Profesional
+                                    </strong>
+
+                                    <small>
+                                        Tienes una trayectoria académica
+                                        o profesional antes de comenzar.
+                                    </small>
+                                </span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-origin="empresarial"
+                            >
+                                <span class="choice-card-icon">
+                                    04
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Emprendedor
+                                    </strong>
+
+                                    <small>
+                                        Has creado proyectos,
+                                        negocios o redes profesionales.
+                                    </small>
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASO 4 -->
+                    <div
+                        id="creation-step-4"
+                        class="creation-panel is-hidden"
+                        data-creation-step="4"
+                    >
+
+                        <div class="panel-heading">
+                            <span class="panel-number">04</span>
+
+                            <div>
+                                <h3>Personalidad</h3>
+                                <p>
+                                    No existe una personalidad perfecta.
+                                    Cada una abre y cierra caminos.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div
+                            id="personality-options"
+                            class="choice-grid"
+                        >
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-personality="negociador"
+                            >
+                                <span class="choice-card-icon">
+                                    01
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Negociador
+                                    </strong>
+
+                                    <small>
+                                        Sabes escuchar y encontrar acuerdos.
+                                    </small>
+                                </span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-personality="carismatico"
+                            >
+                                <span class="choice-card-icon">
+                                    02
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Carismático
+                                    </strong>
+
+                                    <small>
+                                        Tu presencia y comunicación
+                                        generan atención.
+                                    </small>
+                                </span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-personality="estratega"
+                            >
+                                <span class="choice-card-icon">
+                                    03
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Estratega
+                                    </strong>
+
+                                    <small>
+                                        Piensas varios movimientos
+                                        antes de actuar.
+                                    </small>
+                                </span>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="choice-card"
+                                data-personality="territorial"
+                            >
+                                <span class="choice-card-icon">
+                                    04
+                                </span>
+
+                                <span class="choice-card-content">
+                                    <strong>
+                                        Territorial
+                                    </strong>
+
+                                    <small>
+                                        Tu fortaleza está en la calle,
+                                        las colonias y la organización.
+                                    </small>
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- NAVEGACIÓN DE CREACIÓN -->
+                <footer class="creation-footer">
+
+                    <button
+                        id="btn-creation-back"
+                        class="btn btn-ghost"
+                        type="button"
+                    >
+                        Atrás
+                    </button>
+
+
+                    <div class="creation-progress">
+
+                        <span
+                            class="progress-dot is-active"
+                            data-progress="1"
+                        ></span>
+
+                        <span
+                            class="progress-line"
+                        ></span>
+
+                        <span
+                            class="progress-dot"
+                            data-progress="2"
+                        ></span>
+
+                        <span
+                            class="progress-line"
+                        ></span>
+
+                        <span
+                            class="progress-dot"
+                            data-progress="3"
+                        ></span>
+
+                        <span
+                            class="progress-line"
+                        ></span>
+
+                        <span
+                            class="progress-dot"
+                            data-progress="4"
+                        ></span>
+
+                    </div>
+
+
+                    <button
+                        id="btn-creation-next"
+                        class="btn btn-primary"
+                        type="button"
+                    >
+                        Continuar
+                    </button>
+
+                </footer>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             JUEGO
+             ===================================================== -->
+        <section
+            id="screen-game"
+            class="screen screen-game is-hidden"
+            data-screen="game"
+        >
+
+
+            <!-- =================================================
+                 HEADER DEL JUEGO
+                 ================================================= -->
+            <header class="game-header">
+
+                <div class="game-header-left">
+
+                    <button
+                        id="btn-player-profile"
+                        class="player-chip"
+                        type="button"
+                    >
+
+                        <span
+                            id="player-avatar"
+                            class="player-avatar"
+                        >
+                            ?
+                        </span>
+
+                        <span class="player-chip-info">
+
+                            <strong id="hud-player-name">
+                                Tu nombre
+                            </strong>
+
+                            <small id="hud-player-role">
+                                Ciudadano
+                            </small>
+
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="game-header-center">
+
+                    <div class="game-date">
+
+                        <span
+                            id="hud-day-name"
+                            class="game-date-day"
+                        >
+                            Lunes
+                        </span>
+
+                        <strong
+                            id="hud-date"
+                            class="game-date-number"
+                        >
+                            1 de enero
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="hud-time"
+                        class="game-time"
+                    >
+                        08:00
+                    </div>
+
+                </div>
+
+
+                <div class="game-header-right">
+
+                    <button
+                        id="btn-phone"
+                        class="header-tool"
+                        type="button"
+                        aria-label="Teléfono"
+                        title="Teléfono"
+                    >
+                        <span>☎</span>
+                        <small id="phone-badge"></small>
+                    </button>
+
+
+                    <button
+                        id="btn-calendar"
+                        class="header-tool"
+                        type="button"
+                        aria-label="Agenda"
+                        title="Agenda"
+                    >
+                        <span>▣</span>
+                        <small id="calendar-badge"></small>
+                    </button>
+
+
+                    <button
+                        id="btn-menu"
+                        class="header-tool"
+                        type="button"
+                        aria-label="Menú"
+                        title="Menú"
+                    >
+                        <span>☰</span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================================
+                 CONTENEDOR PRINCIPAL
+                 ================================================= -->
+            <main class="game-main">
+
+
+                <!-- CONTEXTO -->
+                <section
+                    class="game-context"
+                    aria-label="Contexto"
+                >
+
+                    <div class="context-place">
+
+                        <span
+                            id="scene-state"
+                            class="context-eyebrow"
+                        >
+                            Aguascalientes
+                        </span>
+
+                        <strong
+                            id="scene-location"
+                        >
+                            Tu colonia
+                        </strong>
+
+                    </div>
+
+
+                    <div class="context-career">
+
+                        <span
+                            id="hud-career-stage"
+                            class="context-eyebrow"
+                        >
+                            INICIO
+                        </span>
+
+                        <strong
+                            id="hud-career-position"
+                        >
+                            Vida ciudadana
+                        </strong>
+
+                    </div>
+
+
+                    <div class="context-status">
+
+                        <span
+                            id="hud-reputation"
+                        >
+                            Reputación 0
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     ESCENA
+                     ================================================= -->
+                <section
+                    id="scene-container"
+                    class="scene-container"
+                >
+
+                    <!-- AMBIENTE -->
+                    <div
+                        id="scene-environment"
+                        class="scene-environment"
+                    >
+
+                        <div class="scene-environment-content">
+
+                            <span
+                                id="scene-time-label"
+                                class="scene-time-label"
+                            >
+                                MAÑANA
+                            </span>
+
+                            <h2
+                                id="scene-title"
+                            >
+                                Tu historia comienza aquí
+                            </h2>
+
+                            <p
+                                id="scene-subtitle"
+                            >
+                                Todavía nadie sabe quién eres.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PERSONAJE / DIÁLOGO -->
+                    <article
+                        id="scene-dialogue"
+                        class="scene-dialogue"
+                    >
+
+                        <div class="scene-speaker">
+
+                            <div
+                                id="scene-speaker-avatar"
+                                class="speaker-avatar"
+                            >
+                                ?
+                            </div>
+
+                            <div class="speaker-info">
+
+                                <span
+                                    id="scene-speaker-role"
+                                    class="speaker-role"
+                                >
+                                    PERSONAJE
+                                </span>
+
+                                <h3
+                                    id="scene-speaker-name"
+                                >
+                                    Esperando...
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="dialogue-body">
+
+                            <p
+                                id="scene-text"
+                            >
+                                La historia está a punto de comenzar.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- DECISIONES -->
+                    <section
+                        id="scene-choices"
+                        class="scene-choices"
+                        aria-label="Decisiones"
+                    >
+                        <!-- JavaScript inserta las decisiones -->
+                    </section>
+
+
+
+                    <!-- INDICADOR DE CONSECUENCIA -->
+                    <div
+                        id="scene-consequence"
+                        class="scene-consequence is-hidden"
+                    >
+
+                        <span class="consequence-label">
+                            CONSECUENCIA
+                        </span>
+
+                        <strong id="scene-consequence-title">
+                            —
+                        </strong>
+
+                        <p id="scene-consequence-text">
+                            —
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     BARRA CONTEXTUAL
+                     ================================================= -->
+                <nav
+                    class="quick-bar"
+                    aria-label="Accesos rápidos"
+                >
+
+                    <button
+                        id="quick-territory"
+                        class="quick-action"
+                        type="button"
+                    >
+                        <span>⌖</span>
+                        <small>Territorio</small>
+                    </button>
+
+
+                    <button
+                        id="quick-team"
+                        class="quick-action"
+                        type="button"
+                    >
+                        <span>♙</span>
+                        <small>Equipo</small>
+                    </button>
+
+
+                    <button
+                        id="quick-relationships"
+                        class="quick-action"
+                        type="button"
+                    >
+                        <span>♡</span>
+                        <small>Relaciones</small>
+                    </button>
+
+
+                    <button
+                        id="quick-media"
+                        class="quick-action"
+                        type="button"
+                    >
+                        <span>◉</span>
+                        <small>Medios</small>
+                    </button>
+
+
+                    <button
+                        id="quick-career"
+                        class="quick-action"
+                        type="button"
+                    >
+                        <span>↗</span>
+                        <small>Carrera</small>
+                    </button>
+
+                </nav>
+
+            </main>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SISTEMA DE PANELES
+             Un solo panel puede ocupar el primer plano.
+             ===================================================== -->
+        <div
+            id="panel-layer"
+            class="panel-layer is-hidden"
+            aria-hidden="true"
+        >
+
+            <div
+                id="panel-backdrop"
+                class="panel-backdrop"
+            ></div>
+
+
+            <aside
+                id="side-panel"
+                class="side-panel"
+                aria-label="Panel"
+            >
+
+                <header class="side-panel-header">
+
+                    <div>
+
+                        <span
+                            id="panel-kicker"
+                            class="panel-kicker"
+                        >
+                            PANEL
+                        </span>
+
+                        <h2
+                            id="panel-title"
+                        >
+                            —
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="btn-close-panel"
+                        class="panel-close"
+                        type="button"
+                        aria-label="Cerrar"
+                    >
+                        ×
+                    </button>
+
+                </header>
+
+
+                <div
+                    id="panel-content"
+                    class="side-panel-content"
+                >
+                    <!-- Contenido dinámico -->
+                </div>
+
+            </aside>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             CONTENEDORES DE PANELES DINÁMICOS
+             ===================================================== -->
+
+        <template id="template-phone">
+
+            <div class="panel-section">
+
+                <div class="panel-section-heading">
+
+                    <span>
+                        MENSAJES
+                    </span>
+
+                    <small id="phone-unread-count">
+                        0 sin leer
+                    </small>
+
+                </div>
+
+                <div
+                    id="phone-messages"
+                    class="message-list"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <template id="template-calendar">
+
+            <div class="panel-section">
+
+                <div class="panel-section-heading">
+
+                    <span>
+                        AGENDA
+                    </span>
+
+                    <small id="calendar-date-label">
+                        Hoy
+                    </small>
+
+                </div>
+
+                <div
+                    id="calendar-events"
+                    class="calendar-list"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <template id="template-territory">
+
+            <div class="panel-section">
+
+                <div class="territory-overview">
+
+                    <div class="territory-stat">
+                        <span>Personas conocidas</span>
+                        <strong id="territory-people">0</strong>
+                    </div>
+
+                    <div class="territory-stat">
+                        <span>Líderes</span>
+                        <strong id="territory-leaders">0</strong>
+                    </div>
+
+                    <div class="territory-stat">
+                        <span>Secciones</span>
+                        <strong id="territory-sections">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="territory-zones"
+                    class="territory-list"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <template id="template-team">
+
+            <div class="panel-section">
+
+                <div class="panel-section-heading">
+                    <span>
+                        TU EQUIPO
+                    </span>
+                </div>
+
+                <div
+                    id="team-list"
+                    class="character-list"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <template id="template-relationships">
+
+            <div class="panel-section">
+
+                <div class="panel-section-heading">
+                    <span>
+                        RELACIONES
+                    </span>
+                </div>
+
+                <div
+                    id="relationships-list"
+                    class="character-list"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <template id="template-media">
+
+            <div class="panel-section">
+
+                <div class="media-summary">
+
+                    <div class="media-stat">
+                        <span>Presencia</span>
+                        <strong id="media-presence">0</strong>
+                    </div>
+
+                    <div class="media-stat">
+                        <span>Credibilidad</span>
+                        <strong id="media-credibility">0</strong>
+                    </div>
+
+                    <div class="media-stat">
+                        <span>Atención</span>
+                        <strong id="media-attention">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="media-feed"
+                    class="media-feed"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <template id="template-career">
+
+            <div class="panel-section">
+
+                <div class="career-current">
+
+                    <span class="career-label">
+                        ETAPA ACTUAL
+                    </span>
+
+                    <h3 id="career-panel-stage">
+                        Vida ciudadana
+                    </h3>
+
+                    <p id="career-panel-description">
+                        Tu carrera apenas comienza.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="career-history"
+                    class="career-history"
+                ></div>
+
+            </div>
+
+        </template>
+
+
+
+        <!-- =====================================================
+             MODAL GENERAL
+             ===================================================== -->
+        <div
+            id="modal-layer"
+            class="modal-layer is-hidden"
+            aria-hidden="true"
+        >
+
+            <div
+                id="modal-backdrop"
+                class="modal-backdrop"
+            ></div>
+
+
+            <section
+                id="game-modal"
+                class="game-modal"
+                role="dialog"
+                aria-modal="true"
+            >
+
+                <header class="modal-header">
+
+                    <div>
+
+                        <span
+                            id="modal-kicker"
+                            class="modal-kicker"
+                        >
+                            EVENTO
+                        </span>
+
+                        <h2
+                            id="modal-title"
+                        >
+                            —
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="btn-close-modal"
+                        class="modal-close"
+                        type="button"
+                        aria-label="Cerrar"
+                    >
+                        ×
+                    </button>
+
+                </header>
+
+
+                <div
+                    id="modal-content"
+                    class="modal-content"
+                >
+                    <!-- Contenido dinámico -->
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             RESULTADO DE ACCIÓN
+             ===================================================== -->
+        <div
+            id="result-layer"
+            class="result-layer is-hidden"
+            aria-hidden="true"
+        >
+
+            <div class="result-card">
+
+                <span
+                    id="result-kicker"
+                    class="result-kicker"
+                >
+                    RESULTADO
+                </span>
+
+                <h2
+                    id="result-title"
+                >
+                    —
+                </h2>
+
+                <p
+                    id="result-text"
+                >
+                    —
+                </p>
+
+
+                <div
+                    id="result-effects"
+                    class="result-effects"
+                >
+                    <!-- Cambios dinámicos -->
+                </div>
+
+
+                <button
+                    id="btn-result-continue"
+                    class="btn btn-primary"
+                    type="button"
+                >
+                    Continuar
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             NOTIFICACIONES
+             ===================================================== -->
+        <div
+            id="toast-container"
+            class="toast-container"
+            aria-live="polite"
+            aria-atomic="true"
+        ></div>
+
+
+
+        <!-- =====================================================
+             MENÚ PRINCIPAL DEL JUEGO
+             ===================================================== -->
+        <div
+            id="game-menu-layer"
+            class="menu-layer is-hidden"
+            aria-hidden="true"
+        >
+
+            <div
+                id="menu-backdrop"
+                class="menu-backdrop"
+            ></div>
+
+
+            <aside class="game-menu">
+
+                <header class="game-menu-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            LUNA GAME
+                        </span>
+
+                        <h2>
+                            Menú
+                        </h2>
+                    </div>
+
+
+                    <button
+                        id="btn-close-menu"
+                        class="panel-close"
+                        type="button"
+                        aria-label="Cerrar menú"
+                    >
+                        ×
+                    </button>
+
+                </header>
+
+
+                <div class="game-menu-options">
+
+                    <button
+                        id="menu-save"
+                        class="menu-option"
+                        type="button"
+                    >
+                        <span>Guardar historia</span>
+                        <small>Guardar progreso actual</small>
+                    </button>
+
+
+                    <button
+                        id="menu-profile"
+                        class="menu-option"
+                        type="button"
+                    >
+                        <span>Mi perfil</span>
+                        <small>Ver trayectoria y estadísticas</small>
+                    </button>
+
+
+                    <button
+                        id="menu-settings"
+                        class="menu-option"
+                        type="button"
+                    >
+                        <span>Configuración</span>
+                        <small>Ajustes de la experiencia</small>
+                    </button>
+
+
+                    <button
+                        id="menu-main"
+                        class="menu-option"
+                        type="button"
+                    >
+                        <span>Volver al inicio</span>
+                        <small>Salir de la historia actual</small>
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             PERFIL DEL JUGADOR
+             ===================================================== -->
+        <template id="template-profile">
+
+            <div class="profile-panel">
+
+                <div class="profile-hero">
+
+                    <div
+                        id="profile-avatar"
+                        class="profile-avatar"
+                    >
+                        ?
+                    </div>
+
+                    <div>
+
+                        <span
+                            id="profile-role"
+                            class="profile-role"
+                        >
+                            CIUDADANO
+                        </span>
+
+                        <h3 id="profile-name">
+                            Tu nombre
+                        </h3>
+
+                        <p id="profile-location">
+                            —
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="profile-stats"
+                    class="profile-stats"
+                ></div>
+
+
+                <div class="profile-section">
+
+                    <span class="profile-section-title">
+                        TRAYECTORIA
+                    </span>
+
+                    <div
+                        id="profile-career-history"
+                        class="profile-career-history"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </template>
+
+
+
+        <!-- =====================================================
+             CARGA
+             ===================================================== -->
+        <div
+            id="loading-layer"
+            class="loading-layer is-hidden"
+            aria-hidden="true"
+        >
+
+            <div class="loading-card">
+
+                <div class="loading-mark">
+                    L
+                </div>
+
+                <span id="loading-text">
+                    Preparando tu historia...
+                </span>
+
+                <div class="loading-bar">
+                    <span id="loading-progress"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+    <script src="script.js"></script>
+
+</body>
+</html>
